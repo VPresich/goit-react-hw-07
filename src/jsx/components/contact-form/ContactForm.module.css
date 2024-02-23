@@ -1,0 +1,31 @@
+.contactform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 24px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--secondary-color);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.contactinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .contactform {
+    width: 375px;
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .contactform {
+    margin-bottom: 28px;
+  }
+}
