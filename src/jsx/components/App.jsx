@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchContacts } from '../redux/operations';
-import { getError, getIsLoading } from '../redux/selectors';
+import { selectError, selectIsLoading } from '../redux/selectors';
 import AppContainer from './app-container/AppContainer';
 import TitleSection from './titlesection/TitleSection';
 import ContactForm from './contact-form/ContactForm';
@@ -12,8 +12,8 @@ import ContactsList from './contacts-list/ContactsList';
 import { SEARCH_LABEL, TITLE } from '../auxiliary/constants';
 
 const App = () => {
-  const error = useSelector(getError);
-  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
   useEffect(() => {
