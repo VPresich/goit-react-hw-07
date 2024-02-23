@@ -1,35 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { itemsReducer } from '../redux/contactsSlice';
+import { filtersReducer } from '../redux/filtersSlice';
 
-import storage from 'redux-persist/lib/storage';
-import { rootReducer } from './rootReducer';
-
-const persistConfig = {
-  key: 'contacts',
-  storage,
-  whitelist: ['items'],
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-export const store = configureStore({
-  // https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data
-  reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+const store = configureStore({
+  reducer: {
+    items: itemsReducer,
+    filters: filtersReducer,
+  },
 });
 
-export const persistor = persistStore(store);
+export default store;
