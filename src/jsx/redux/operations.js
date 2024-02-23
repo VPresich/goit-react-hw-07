@@ -6,7 +6,7 @@ import axios from 'axios';
 axios.defaults.baseURL = BASE_URL;
 
 export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
+  `${END_POINT}/fetchAll`,
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(END_POINT);
@@ -19,7 +19,7 @@ export const fetchContacts = createAsyncThunk(
 );
 
 export const addContact = createAsyncThunk(
-  'contacts/add',
+  `${END_POINT}/addContact`,
   async (values, thunkAPI) => {
     try {
       const response = await axios.post(END_POINT, values);
@@ -31,7 +31,7 @@ export const addContact = createAsyncThunk(
 );
 
 export const deleteContact = createAsyncThunk(
-  'contacts/delete',
+  `${END_POINT}/deleteContact`,
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`${END_POINT}/${id}`);
