@@ -1,5 +1,6 @@
 .contacts {
-  margin-top: 20px;
+  margin-top: 80px;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
