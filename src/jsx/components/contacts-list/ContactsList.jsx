@@ -1,11 +1,10 @@
 import { useSelector } from 'react-redux';
-import { getFilter, getContacts } from '../../redux/selectors';
+import { getFilter, getItems } from '../../redux/selectors';
 import ContactItem from './ContactItem';
-import Infinity from '../loaders/Infinity/Infinity';
 import styles from './ContactsList.module.css';
 
 const ContactsList = () => {
-  const { items, error, isLoading } = useSelector(getContacts);
+  const items = useSelector(getItems);
   const strFilter = useSelector(getFilter);
 
   const filteredContacts =
@@ -17,7 +16,6 @@ const ContactsList = () => {
 
   return (
     <ul className={styles.contacts}>
-      {isLoading && !error && <Infinity />}
       {filteredContacts.length > 0 ? (
         filteredContacts.map(contact => (
           <li className={styles.item} key={contact.id}>
