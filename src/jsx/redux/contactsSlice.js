@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { CONTACTS_SLICE } from './constants';
 import { fetchContacts, deleteContact, addContact } from './operations';
 
 const handlePending = state => {
@@ -12,7 +12,7 @@ const handleRejected = (state, action) => {
 };
 
 const contactsSlice = createSlice({
-  name: 'contactss',
+  name: CONTACTS_SLICE,
   initialState: {
     items: [],
     isLoading: false,

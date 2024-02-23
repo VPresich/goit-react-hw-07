@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { BASE_URL, END_POINT } from './constants';
+import { BASE_URL, END_POINT, CONTACTS_SLICE } from './constants';
 
 import axios from 'axios';
 
 axios.defaults.baseURL = BASE_URL;
 
 export const fetchContacts = createAsyncThunk(
-  `${END_POINT}/fetchAll`,
+  `${CONTACTS_SLICE}/fetchAll`,
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(END_POINT);
@@ -19,7 +19,7 @@ export const fetchContacts = createAsyncThunk(
 );
 
 export const addContact = createAsyncThunk(
-  `${END_POINT}/addContact`,
+  `${CONTACTS_SLICE}/addContact`,
   async (values, thunkAPI) => {
     try {
       const response = await axios.post(END_POINT, values);
@@ -31,7 +31,7 @@ export const addContact = createAsyncThunk(
 );
 
 export const deleteContact = createAsyncThunk(
-  `${END_POINT}/deleteContact`,
+  `${CONTACTS_SLICE}/deleteContact`,
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`${END_POINT}/${id}`);
