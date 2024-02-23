@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-//import { addItem } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/operations';
 import { Formik, Form } from 'formik';
 import { INITIAL_CONTACT } from '../../auxiliary/constants';
 import { FeedbackSchema } from '../../auxiliary/feedback-schema';
@@ -20,7 +20,7 @@ const ContactForm = () => {
 
   const handleSubmit = (values, actions) => {
     console.log('values', values);
-    //dispatch(addItem(values));
+    dispatch(addContact(values));
     actions.resetForm();
   };
 
