@@ -1,4 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
+import { selectError, selectIsLoading } from '../../redux/selectors';
 import { addContact } from '../../redux/operations';
 import { Formik, Form } from 'formik';
 import { INITIAL_CONTACT } from '../../auxiliary/constants';
@@ -8,6 +10,7 @@ import {
   LABEL_NAME,
   LABEL_PHONE,
   CAPTION_ADD,
+  CAPTION_ADDING,
 } from '../../auxiliary/constants';
 
 import CustomButton from '../custom-button/CustomButton';
@@ -17,10 +20,11 @@ import styles from './ContactForm.module.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-
+  const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectError);
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
-    actions.resetForm();
+    !isError && actions.resetForm();
   };
 
   return (
@@ -38,7 +42,10 @@ const ContactForm = () => {
             {LABEL_PHONE}
           </FormField>
         </div>
-        <CustomButton type="submit">{CAPTION_ADD}</CustomButton>
+        <CustomButton type="submit">
+          {isLoading ? CAPTION_ADDING : CAPTION_ADD}
+        </CustomButton>
+        <Toaster />
       </Form>
     </Formik>
   );

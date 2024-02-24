@@ -7,6 +7,7 @@ export const INITIAL_CONTACT = {
   number: '',
 };
 export const CAPTION_ADD = 'Add Contact';
+export const CAPTION_ADDING = 'Adding Contact...';
 export const CAPTION_DELETE = 'Delete';
 export const LABEL_NAME = 'Name:';
 export const LABEL_PHONE = 'Number:';
