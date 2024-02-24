@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
 import { selectError, selectIsLoading } from '../../redux/selectors';
 import { addContact } from '../../redux/operations';
 import { Formik, Form } from 'formik';
@@ -45,7 +44,6 @@ const ContactForm = () => {
         <CustomButton type="submit">
           {isLoading ? CAPTION_ADDING : CAPTION_ADD}
         </CustomButton>
-        <Toaster />
       </Form>
     </Formik>
   );

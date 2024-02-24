@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Toaster } from 'react-hot-toast';
 import { fetchContacts } from '../redux/operations';
 import { selectError, selectIsLoading } from '../redux/selectors';
 import AppContainer from './app-container/AppContainer';
@@ -22,6 +22,7 @@ const App = () => {
 
   return (
     <AppContainer>
+      <Toaster />
       <TitleSection>{TITLE}</TitleSection>
       <ContactForm />
       <SearchBox>{SEARCH_LABEL}</SearchBox>
