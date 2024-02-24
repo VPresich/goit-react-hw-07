@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from '../../redux/selectors';
+import { selectError, selectIsAdding } from '../../redux/selectors';
 import { addContact } from '../../redux/operations';
 import { Formik, Form } from 'formik';
 import { INITIAL_CONTACT } from '../../auxiliary/constants';
@@ -14,13 +14,13 @@ import {
 
 import CustomButton from '../custom-button/CustomButton';
 import FormField from '../form-field/FormField';
-
 import styles from './ContactForm.module.css';
 
 const ContactForm = () => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
+  const isOperation = useSelector(selectIsAdding);
   const isError = useSelector(selectError);
+
+  const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
     !isError && actions.resetForm();
@@ -42,7 +42,7 @@ const ContactForm = () => {
           </FormField>
         </div>
         <CustomButton type="submit">
-          {isLoading ? CAPTION_ADDING : CAPTION_ADD}
+          {isOperation && !isError ? CAPTION_ADDING : CAPTION_ADD}
         </CustomButton>
       </Form>
     </Formik>
